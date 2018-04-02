@@ -53,6 +53,11 @@ class Particle {
 
     this.a.x = forceConst * force * cos(angle);
     this.a.y = forceConst * force * sin(angle);
+
+    if (this.charge == 0) {
+      this.a.x = -this.a.x;
+      this.a.y = -this.a.y;
+    }
   }
 
   move() {
