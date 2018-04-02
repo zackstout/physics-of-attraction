@@ -19,10 +19,17 @@ class Particle {
 
   getForce(particle) {
     // get distance between particles:
-    var d = dist(particle.x, particle.y, this.x, this.y);
+    var d = int(dist(particle.x, particle.y, this.x, this.y));
+    if (d < 1) {
+      this.v.x = 0;
+      this.v.y = 0;
+      particle.v.x = 0;
+      particle.v.y = 0;
+      return;
+    }
     // console.log(d);
-    var force = 1 / Math.pow(d, 2);
-
+    var force = 4 / Math.pow(d, 2);
+    // console.log(force);
     var forceConst = 50;
 
     // get slope between particles:
