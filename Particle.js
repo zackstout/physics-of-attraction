@@ -9,6 +9,7 @@ class Particle {
     this.charge = Math.random() > 0.5 ? 1 : 0;
   }
 
+  // kind of surprised it's not flipping color of each ellipse on each frame:
   show() {
     var color = this.charge > 0 ? 'red' : 'blue';
     fill(color);
@@ -22,21 +23,29 @@ class Particle {
     // console.log(d);
     var force = 1 / Math.pow(d, 2);
 
-    var forceConst = 1000;
+    var forceConst = 50;
 
     // get slope between particles:
     var yDiff = this.y - particle.y;
     var xDiff = this.x - particle.x;
     var slope = yDiff / xDiff;
-    var arctan = atan(slope);
-    // console.log(slope);
+    var arctan = atan(1 / slope);
 
-    // console.log(arctan);
+    var angle;
 
-    this.a.x = forceConst * force * cos(slope);
-    this.a.y = forceConst * force * sin(slope);
+    // there is surely a cleverer way to do this:
+    if (xDiff < 0 && yDiff < 0) {
+      angle = 3*PI/2 + arctan;
+    } else if (xDiff < 0 && yDiff > 0) {
+      angle = PI/2 + arctan;
+    } else if (xDiff > 0 && yDiff < 0) {
+      angle = 3*PI/2 + arctan;
+    } else if (xDiff > 0 && yDiff > 0) {
+      angle = PI/2 + arctan;
+    }
 
-    // console.log(this.a.x, this.a.y);
+    this.a.x = forceConst * force * cos(angle);
+    this.a.y = forceConst * force * sin(angle);
   }
 
   move() {
