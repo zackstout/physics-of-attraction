@@ -6,7 +6,7 @@ class Particle {
     this.y = y;
     this.v = {x: 0, y: 0};
     this.a = {x: 0, y: 0};
-    this.charge = Math.random() > 0.5 ? 1 : 0;
+    this.charge = Math.random() > 0.5 ? 1 : -1;
   }
 
   // kind of surprised it's not flipping color of each ellipse on each frame:
@@ -33,6 +33,10 @@ class Particle {
       return;
     }
 
+    var direction = this.charge * particle.charge;
+    // console.log(direction);
+    
+
     var force = 1 / Math.pow(d, 2);
     var forceConst = 18;
 
@@ -56,13 +60,14 @@ class Particle {
       angle = PI/2 + arctan;
     }
 
-    this.a.x += forceConst * force * cos(angle);
-    this.a.y += forceConst * force * sin(angle);
+    // if direction=1, repel; if -1, attract:
+    this.a.x -= direction * forceConst * force * cos(angle);
+    this.a.y -= direction * forceConst * force * sin(angle);
 
-    if (this.charge == 0) {
-      this.a.x -= forceConst * force * cos(angle);
-      this.a.y -= forceConst * force * sin(angle);
-    }
+    // if (this.charge == 0) {
+    //   this.a.x -= forceConst * force * cos(angle);
+    //   this.a.y -= forceConst * force * sin(angle);
+    // }
   }
 
   move() {
