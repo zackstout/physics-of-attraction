@@ -26,7 +26,7 @@ class Particle {
     var forceConst = 50;
 
     // get slope between particles:
-    var yDiff = this.y - particle.y;
+    var yDiff = - (this.y - particle.y);
     var xDiff = this.x - particle.x;
     var slope = yDiff / xDiff;
     var arctan = atan(1 / slope);
