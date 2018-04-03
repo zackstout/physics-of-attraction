@@ -18,14 +18,12 @@ class Particle {
   }
 
   getForce(particle) {
-    // this.a.x = 0;
-    // this.a.y = 0;
     // Get distance between particles:
     // don't forget the int here (?): No doesn't seem necessary:
     var d = dist(particle.x, particle.y, this.x, this.y);
 
     // Interesting, whether this works really hinges on the value of d -- if it's 2, we get chaos. 5 staunches it well enough:
-    if (d < 5) {
+    if (d < 3) {
       this.v.x = 0;
       this.v.y = 0;
       particle.v.x = 0;
@@ -35,10 +33,9 @@ class Particle {
 
     var direction = this.charge * particle.charge;
     // console.log(direction);
-    
 
     var force = 1 / Math.pow(d, 2);
-    var forceConst = 18;
+    var forceConst = 100;
 
     // Get slope between particles:
     var yDiff = - (this.y - particle.y);

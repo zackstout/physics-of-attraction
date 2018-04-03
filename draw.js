@@ -1,7 +1,8 @@
 
 var parts = [];
 
-function mousePressed() {
+// why can't we use mouseDragged?? // Hmm now we can!
+function mouseDragged() {
   var part = new Particle(mouseX, mouseY);
   parts.push(part);
   console.log(parts);
@@ -15,7 +16,7 @@ function setup() {
 function draw() {
   background(220);
   parts.forEach(part => {
-
+    // zero out acceleration:
     part.a.x = 0;
     part.a.y = 0;
     // is there a better way?
@@ -24,7 +25,6 @@ function draw() {
         part.getForce(particle);
         // shouldn't move until all forces have been summed up.
       }
-
     });
 
     part.move();
