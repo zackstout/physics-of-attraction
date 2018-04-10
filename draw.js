@@ -15,7 +15,13 @@ function setup() {
 
 function draw() {
   background(220);
-  parts.forEach(part => {
+  parts.forEach((part, i) => {
+
+    // Garbage collection:
+    if (part.x > width + 100 || part.x < -100 || part.y > height + 100 || part.y < -100) {
+      parts.splice(i, 1);
+    }
+
     // zero out acceleration:
     part.a.x = 0;
     part.a.y = 0;
@@ -33,4 +39,3 @@ function draw() {
     // part.show();
   });
 }
-
