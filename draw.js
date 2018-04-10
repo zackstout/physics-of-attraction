@@ -5,16 +5,31 @@ var parts = [];
 function mouseDragged() {
   var part = new Particle(mouseX, mouseY);
   parts.push(part);
-  console.log(parts);
+  // console.log(parts);
 }
 
 function setup() {
   createCanvas(600, 600);
   background(220);
+  var input = document.getElementById('gravVal').value;
+  console.log(input);
+}
+
+
+function handleChange() {
+  console.log('hi');
 }
 
 function draw() {
   background(220);
+
+
+
+
+
+
+
+
   parts.forEach((part, i) => {
 
     // Garbage collection:
