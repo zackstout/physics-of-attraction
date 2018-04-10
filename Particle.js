@@ -14,7 +14,7 @@ class Particle {
     var color = this.charge > 0 ? 'red' : 'blue';
     fill(color);
     noStroke();
-    ellipse(this.x, this.y, 5, 5);
+    ellipse(this.x, this.y, 9, 9);
   }
 
   getForce(particle) {
@@ -35,7 +35,7 @@ class Particle {
     // console.log(direction);
 
     var force = 1 / Math.pow(d, 2);
-    var forceConst = 100;
+    var forceConst = 80;
 
     // Get slope between particles:
     var yDiff = - (this.y - particle.y);

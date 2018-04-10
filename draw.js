@@ -1,7 +1,7 @@
 
 var parts = [];
 
-// why can't we use mouseDragged?? // Hmm now we can!
+// why can't we use mouseDragged?? // Hmm now we can! ... Works like half the time??
 function mouseDragged() {
   var part = new Particle(mouseX, mouseY);
   parts.push(part);
