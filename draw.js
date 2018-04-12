@@ -1,5 +1,7 @@
 
 var parts = [];
+var forceConst;
+var input;
 
 // why can't we use mouseDragged?? // Hmm now we can! ... Works like half the time??
 function mouseDragged() {
@@ -11,24 +13,18 @@ function mouseDragged() {
 function setup() {
   createCanvas(600, 600);
   background(220);
-  var input = document.getElementById('gravVal').value;
+  input = document.getElementById('gravVal').value;
   console.log(input);
 }
 
 
 function handleChange() {
-  console.log('hi');
+  input = document.getElementById('gravVal').value;
+  console.log('hi', input);
 }
 
 function draw() {
   background(220);
-
-
-
-
-
-
-
 
   parts.forEach((part, i) => {
 
