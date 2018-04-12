@@ -35,7 +35,7 @@ class Particle {
     // console.log(direction);
 
     var force = 1 / Math.pow(d, 2);
-    forceConst = 96;
+    // forceConst = 96;
 
     // Get slope between particles:
     var yDiff = - (this.y - particle.y);

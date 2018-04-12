@@ -14,13 +14,15 @@ function setup() {
   createCanvas(600, 600);
   background(220);
   input = document.getElementById('gravVal').value;
-  console.log(input);
+  forceConst = input;
+  // console.log(input);
 }
 
 
 function handleChange() {
   input = document.getElementById('gravVal').value;
   console.log('hi', input);
+  forceConst = input;
 }
 
 function draw() {
